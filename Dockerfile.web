@@ -1,0 +1,4 @@
+ARG BRANCH_TAG=latest
+FROM nimblehq/expense_tracker:${BRANCH_TAG}
+
+CMD ./bin/start.sh
