@@ -16,6 +16,24 @@
     <% if alert %>
       <p class="alert"><%= alert %></p>
     <% end %>
-    <%= yield %>
+
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+      <a class="navbar-brand" href="#">ExpenseTracker</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link <%= is_active_nav_item?(locations_path)  %>" href="<%= locations_path %>">Locations</a>
+          <a class="nav-item nav-link <%= is_active_nav_item?(locations_path)  %>" href="<%= locations_path %>">Users</a>
+          <a class="nav-item nav-link <%= is_active_nav_item?(accounts_path)  %>" href="<%= accounts_path %>">Accounts</a>
+          <a class="nav-item nav-link <%= is_active_nav_item?(transactions_path)  %>" href="<%= transactions_path %>">Transactions</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

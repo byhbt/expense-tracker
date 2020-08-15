@@ -7,7 +7,6 @@ class CreateAccounts < ActiveRecord::Migration[6.0]
       # Content
       t.string :name
       t.decimal :balance
-      t.string :type
       t.text :description
 
       t.timestamps

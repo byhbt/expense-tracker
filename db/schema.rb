@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2020_08_15_075144) do
     t.bigint "user_id", null: false
     t.string "name"
     t.decimal "balance"
-    t.string "type"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

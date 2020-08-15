@@ -11,23 +11,13 @@
 </p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @account.type %>
-</p>
-
-<p>
   <strong>Description:</strong>
   <%= @account.description %>
 </p>
 
 <p>
-  <strong>References:</strong>
-  <%= @account.references %>
-</p>
-
-<p>
   <strong>User:</strong>
-  <%= @account.user %>
+  <%= @account.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_account_path(@account) %> |
