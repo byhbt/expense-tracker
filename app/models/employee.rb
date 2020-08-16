@@ -1,3 +1,4 @@
 class Employee < ApplicationRecord
-  self.table_name = 'users'
+  belongs_to :location
+  has_many :accounts
 end
