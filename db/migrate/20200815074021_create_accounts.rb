@@ -7,6 +7,7 @@ class CreateAccounts < ActiveRecord::Migration[6.0]
       # Content
       t.string :name
       t.decimal :balance
+      t.date :expired_at
       t.text :description
 
       t.timestamps

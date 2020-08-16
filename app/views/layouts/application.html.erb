@@ -10,13 +10,6 @@
   </head>
 
   <body>
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
-
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
       <a class="navbar-brand" href="#">ExpenseTracker</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,15 +17,25 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link <%= is_active_nav_item?(locations_path)  %>" href="<%= locations_path %>">Locations</a>
-          <a class="nav-item nav-link <%= is_active_nav_item?(employees_path)  %>" href="<%= employees_path %>">Employees</a>
-          <a class="nav-item nav-link <%= is_active_nav_item?(accounts_path)  %>" href="<%= accounts_path %>">Accounts</a>
-          <a class="nav-item nav-link <%= is_active_nav_item?(transactions_path)  %>" href="<%= transactions_path %>">Transactions</a>
+          <a class="nav-item nav-link <%= is_active_nav_item?(locations_path)  %>" href="<%= locations_path %>">
+          <i class="far fa-building"></i> Locations</a>
+          <a class="nav-item nav-link <%= is_active_nav_item?(employees_path)  %>" href="<%= employees_path %>">
+          <i class="fas fa-users"></i> Employees</a>
+          <a class="nav-item nav-link <%= is_active_nav_item?(accounts_path)  %>" href="<%= accounts_path %>">
+          <i class="fas fa-wallet"></i> Accounts</a>
+          <a class="nav-item nav-link <%= is_active_nav_item?(transactions_path)  %>" href="<%= transactions_path %>">
+          <i class="fas fa-cash-register"></i> Transactions</a>
         </div>
       </div>
     </nav>
 
     <div class="container">
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
       <%= yield %>
     </div>
   </body>
