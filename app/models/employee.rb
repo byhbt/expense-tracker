@@ -1,4 +1,4 @@
 class Employee < ApplicationRecord
   belongs_to :location
-  has_many :accounts
+  has_and_belongs_to_many :accounts
 end

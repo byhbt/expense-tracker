@@ -8,7 +8,7 @@ class CreateEmployees < ActiveRecord::Migration[6.0]
       # Content
       t.string :first_name
       t.string :last_name
-      t.date :joined_at
+      t.datetime :joined_at
 
       t.timestamps
     end
