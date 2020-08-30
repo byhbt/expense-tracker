@@ -16,13 +16,12 @@ ActiveRecord::Schema.define(version: 2020_08_17_015115) do
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.string "name"
     t.decimal "balance"
+    t.date "expired_at"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "accounts_employees", id: false, force: :cascade do |t|
@@ -35,33 +34,33 @@ ActiveRecord::Schema.define(version: 2020_08_17_015115) do
   end
 
   create_table "employees", force: :cascade do |t|
+    t.bigint "location_id", null: false
     t.string "first_name"
     t.string "last_name"
-    t.date "joined_date"
-    t.bigint "location_id", null: false
-    t.bigint "account_id"
+    t.string "email"
+    t.datetime "joined_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_employees_on_account_id"
     t.index ["location_id"], name: "index_employees_on_location_id"
   end
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
+    t.text "description"
+    t.text "tax_info"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "transactions", force: :cascade do |t|
     t.bigint "account_id", null: false
-    t.bigint "user_id", null: false
-    t.integer "type"
-    t.decimal "amount"
+    t.bigint "employee_id", null: false
+    t.decimal "amount", default: "0.0", null: false
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_transactions_on_account_id"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
+    t.index ["employee_id"], name: "index_transactions_on_employee_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,9 +75,7 @@ ActiveRecord::Schema.define(version: 2020_08_17_015115) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "accounts", "users"
-  add_foreign_key "employees", "accounts"
   add_foreign_key "employees", "locations"
   add_foreign_key "transactions", "accounts"
-  add_foreign_key "transactions", "users"
+  add_foreign_key "transactions", "employees"
 end

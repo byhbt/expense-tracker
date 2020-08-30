@@ -3,11 +3,11 @@ class CreateEmployees < ActiveRecord::Migration[6.0]
     create_table :employees do |t|
       # Context
       t.references :location, null: false, foreign_key: true
-      t.references :account, null: true, foreign_key: true
 
       # Content
       t.string :first_name
-      t.string :last_name
+      t.string :last_name, null: true
+      t.string :email, null: true
       t.datetime :joined_at
 
       t.timestamps

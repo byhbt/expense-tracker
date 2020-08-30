@@ -3,12 +3,11 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
     create_table :transactions do |t|
       # Context
       t.references :account, null: false, foreign_key: true
-      t.references :user, null: false, foreign_key: true
+      t.references :employee, null: false, foreign_key: true
 
       # Content
-      t.integer :type
-      t.decimal :amount
-      t.text :description
+      t.decimal :amount, null: false, default: 0
+      t.text :description, null: true
 
       t.timestamps
     end
