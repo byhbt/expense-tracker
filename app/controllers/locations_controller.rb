@@ -7,8 +7,7 @@ class LocationsController < ApplicationController
   end
 
   # GET /locations/1
-  def show
-  end
+  def show; end
 
   # GET /locations/new
   def new
@@ -16,8 +15,7 @@ class LocationsController < ApplicationController
   end
 
   # GET /locations/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /locations
   def create

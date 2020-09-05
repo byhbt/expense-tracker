@@ -39,7 +39,14 @@
 
 # Ignore folder information and IDE-specific files
 .DS_Store
-.idea/*
+
+# Ignore for RubyMine stuffs
+.idea
+.run
+
+# https://youtrack.jetbrains.com/issue/RUBY-25960
+.generators
+.rakeTasks
 
 # Ignore the test coverage results from SimpleCov
 /coverage
