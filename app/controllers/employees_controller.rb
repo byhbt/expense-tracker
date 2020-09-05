@@ -8,6 +8,7 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1
   def show
+    @accounts = Account.all
   end
 
   # GET /employees/new
@@ -37,6 +38,10 @@ class EmployeesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def budget
+    test = params
   end
 
   # DELETE /employees/1

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :employees
+  resources :employees do
+    member do
+      post :budget
+    end
+  end
+
   resources :transactions
   resources :accounts
   devise_for :users
