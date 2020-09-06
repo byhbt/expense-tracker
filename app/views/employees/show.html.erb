@@ -18,70 +18,88 @@
   <%= @employee.location_id %>
 </p>
 
-<h1>Add budget</h1>
+<hr>
 
-<div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <table class="table">
-          <thead>
-          <tr>
-            <th>First name</th>
-            <th>Last name</th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @accounts.each do |account| %>
-            <tr>
-              <td><%= account.name %></td>
-              <td><%= account.balance %></td>
-              <td></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+<h2>Using Budget</h2>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Add budget!
-</button>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Balance</th>
+    <th>Used</th>
+    <th>Remaining</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @accounts.each do |account| %>
+    <tr>
+      <td><%= account.name %></td>
+      <td><%= account.balance %></td>
+      <td>10</td>
+      <td>20</td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+<hr>
 
+<h2>Available Budget</h2>
+
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Balance</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @accounts.each do |account| %>
+    <tr>
+      <td><%= account.name %></td>
+      <td><%= account.balance %></td>
+      <td>
+        <%= form_tag budget_employee_path, method: :post do %>
+          <%= hidden_field_tag 'budget', account.id %>
+          <%= submit_tag nil, class: 'btn btn-primary' %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Transaction</h2>
+
+<p><i class="far fa-plus-square"></i> Add</p>
+
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Balance</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @accounts.each do |account| %>
+    <tr>
+      <td><%= account.name %></td>
+      <td><%= account.balance %></td>
+      <td>
+        <%= form_tag budget_employee_path, method: :post do %>
+          <%= hidden_field_tag 'budget', account.id %>
+          <%= submit_tag nil, class: 'btn btn-primary' %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
 <%= link_to 'Back', employees_path %>

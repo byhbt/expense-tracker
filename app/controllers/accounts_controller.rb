@@ -7,8 +7,7 @@ class AccountsController < ApplicationController
   end
 
   # GET /accounts/1
-  def show
-  end
+  def show; end
 
   # GET /accounts/new
   def new
@@ -16,8 +15,7 @@ class AccountsController < ApplicationController
   end
 
   # GET /accounts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /accounts
   def create
@@ -46,13 +44,12 @@ class AccountsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_account
-      @account = Account.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_account
+    @account = Account.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def account_params
-      params.require(:account).permit(:name, :balance, :type, :description)
-    end
+  def budget_param
+    params.permit(:budget_id, :employee_id)
+  end
 end

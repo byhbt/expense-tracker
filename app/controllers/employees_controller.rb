@@ -41,7 +41,8 @@ class EmployeesController < ApplicationController
   end
 
   def budget
-    test = params
+    test = budget_param
+    redirect_back fallback_location: employee_path
   end
 
   # DELETE /employees/1
@@ -51,13 +52,12 @@ class EmployeesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_employee
-      @employee = Employee.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_employee
+    @employee = Employee.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def employee_params
-      params.require(:employee).permit(:first_name, :last_name, :joined_date, :location_id)
-    end
+  def budget_param
+    params.permit(:budget_id, :id)
+  end
 end
